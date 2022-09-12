@@ -11,7 +11,13 @@ const colors = {
   },
 };
 
-const theme = extendTheme({ colors });
+const theme = extendTheme({
+  colors,
+  config: {
+    initialColorMode: "dark",
+    useSystemColorMode: true,
+  },
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return;
