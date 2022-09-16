@@ -32,7 +32,9 @@ const IntroSection = () => {
               size="2xl"
               showBorder={true}
               borderColor={color}
-              src={"/pages/images/avatar.png"}
+              src={
+                "https://raw.githubusercontent.com/Emmett-H/emmettdotdev/main/pages/images/avatar.png?token=GHSAT0AAAAAABY3RCFJYIOPRX6VMCPXRKFEYZEU6NA"
+              }
             />
           </MotionBox>
         </MotionBox>
