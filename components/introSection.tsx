@@ -2,6 +2,7 @@ import * as React from "react";
 import { Flex, Avatar, Box, Container } from "@chakra-ui/react";
 import { MotionBox, MotionFlex } from "./motion";
 import Header from "./header";
+import avatar from "public/avatar.png";
 
 const ANIMATION_DURATION = 0.5;
 
@@ -32,9 +33,7 @@ const IntroSection = () => {
               size="2xl"
               showBorder={true}
               borderColor={color}
-              src={
-                "https://raw.githubusercontent.com/Emmett-H/emmettdotdev/main/pages/images/avatar.png?token=GHSAT0AAAAAABY3RCFJ42RYRIVXHOBWV2EOYZEVIDA"
-              }
+              src={avatar.src}
             />
           </MotionBox>
         </MotionBox>
@@ -72,18 +71,8 @@ const IntroSection = () => {
             </MotionBox>
           </Box>
           <Box as="h2" fontSize="2xl" fontWeight="400" textAlign="left">
-            My name is{" "}
-            <Box as="strong" fontWeight="600">
-              Emmett
-            </Box>{" "}
-            and I&apos;m a{" "}
-            <Box as="span" whiteSpace="nowrap">
-              front end developer
-            </Box>{" "}
-            from{" "}
-            <Box as="span" whiteSpace="nowrap">
-              Ireland 🇮🇪 , based in Manchester 🏴󠁧󠁢󠁥󠁮󠁧󠁿
-            </Box>
+            My name is Emmett and I&apos;m a front end developer from Ireland 🇮🇪
+            , based in Manchester 🏴󠁧󠁢󠁥󠁮󠁧󠁿
           </Box>
         </MotionFlex>
       </Flex>
