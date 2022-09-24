@@ -1,14 +1,12 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { ChakraProvider } from "@chakra-ui/react";
-import { extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme, Box } from "@chakra-ui/react";
 import { NavBar } from "../components/navbar";
 
 const colors = {
   brand: {
     900: "#1a365d",
-    800: "#153e75",
-    700: "#2a69ac",
+    800: "#1a202c",
   },
 };
 
@@ -21,10 +19,20 @@ export const theme = extendTheme({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const NextComponent = Component as any;
+
   return (
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
       <NavBar />
+      <Box
+        as="main"
+        w="full"
+        p="8"
+        mt={{ base: "24", md: "14" }}
+        ml={{ base: "0", md: "64" }}
+      >
+        <NextComponent {...pageProps} />
+      </Box>
     </ChakraProvider>
   );
 }

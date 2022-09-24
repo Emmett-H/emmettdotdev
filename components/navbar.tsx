@@ -9,6 +9,7 @@ import {
   IconButton,
   Link,
   useBreakpointValue,
+  useColorMode,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
@@ -31,6 +32,21 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "About", icon: InformationCircleIcon, link: "/" },
 ];
 
+function ColorModeButton(props: Omit<ButtonProps, "onClick">) {
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  return (
+    <IconButton
+      aria-label={`Switch to ${colorMode === "light" ? "dark" : "light"}`}
+      variant="unstyled"
+      isRound
+      icon={<Box as="span">{colorMode === "dark" ? "🌤" : "🌙"}</Box>}
+      onClick={toggleColorMode}
+      {...props}
+    />
+  );
+}
+
 export const NavBar = () => {
   const router = useRouter();
 
@@ -51,7 +67,7 @@ export const NavBar = () => {
       top="0"
       left="0"
       zIndex="1000"
-      bg="deepPurple.500"
+      bg="whiteAlpha.300"
       w={{ base: "full", md: "64" }}
       minH={{ base: "24", md: "100vh" }}
       maxH={{ base: "unset", md: "100vh" }}
@@ -59,6 +75,7 @@ export const NavBar = () => {
       shadow="md"
     >
       <Flex alignItems="center" justifyContent="space-between" h="9">
+        <ColorModeButton />
         <NextLink href="/" passHref>
           <Link aria-label="Home">emmett.dev logo</Link>
         </NextLink>
