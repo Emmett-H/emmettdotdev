@@ -1,36 +1,20 @@
-import React, { useEffect } from "react";
+import { ReactNode } from "react";
 import {
   Box,
-  Button,
-  ButtonProps,
-  Collapse,
   Flex,
-  Icon,
-  IconButton,
+  HStack,
   Link,
-  useBreakpointValue,
-  useColorMode,
+  IconButton,
   useDisclosure,
+  useColorModeValue,
+  Stack,
+  ButtonProps,
+  useColorMode,
 } from "@chakra-ui/react";
-import {
-  HomeIcon,
-  MenuIcon,
-  InformationCircleIcon,
-  XIcon,
-} from "@heroicons/react/outline";
 import { default as NextLink } from "next/link";
-import { useRouter } from "next/router";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
-type HeroIconType = (props: React.ComponentProps<"svg">) => JSX.Element;
-interface LinkItemProps {
-  name: string;
-  icon: HeroIconType;
-  link: string;
-}
-const LinkItems: Array<LinkItemProps> = [
-  { name: "Overview", icon: HomeIcon, link: "/" },
-  { name: "About", icon: InformationCircleIcon, link: "/" },
-];
+const Links = ["Home", "About", "Contact"];
 
 function ColorModeButton(props: Omit<ButtonProps, "onClick">) {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -47,93 +31,68 @@ function ColorModeButton(props: Omit<ButtonProps, "onClick">) {
   );
 }
 
-export const NavBar = () => {
-  const router = useRouter();
+const NavLink = ({ children }: { children: ReactNode }) => (
+  <Link
+    px={2}
+    py={1}
+    rounded={"md"}
+    _hover={{
+      textDecoration: "none",
+      bg: useColorModeValue("gray.200", "gray.700"),
+    }}
+    href={"#"}
+  >
+    {children}
+  </Link>
+);
 
-  const { isOpen, onOpen, onClose } = useDisclosure({
-    defaultIsOpen: true,
-  });
-
-  useEffect(() => {
-    onClose();
-  }, [router.asPath, onClose]);
-
-  const isMobile = useBreakpointValue({ base: true, md: false });
+export function NavBar() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box
-      as="nav"
-      position="fixed"
-      top="0"
-      left="0"
-      zIndex="1000"
-      bg="whiteAlpha.300"
-      w={{ base: "full", md: "64" }}
-      minH={{ base: "24", md: "100vh" }}
-      maxH={{ base: "unset", md: "100vh" }}
-      p="8"
-      shadow="md"
-    >
-      <Flex alignItems="center" justifyContent="space-between" h="9">
-        <ColorModeButton />
-        <NextLink href="/" passHref>
-          <Link aria-label="Home">emmett.dev logo</Link>
-        </NextLink>
+    <>
+      <Box bg={useColorModeValue("gray.100", "brand.900")} px={4}>
+        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+          <IconButton
+            size={"md"}
+            icon={isOpen ? <XIcon /> : <MenuIcon />}
+            aria-label={"Open Menu"}
+            display={{ md: "none" }}
+            onClick={isOpen ? onClose : onOpen}
+          />
+          <HStack spacing={8} alignItems={"center"}>
+            <NextLink href="/">
+              <Link
+                _hover={{
+                  textDecoration: "none",
+                }}
+                aria-label="Home"
+              >
+                <Box>Emmett.Dev Logo</Box>
+              </Link>
+            </NextLink>
+            <HStack
+              as={"nav"}
+              spacing={4}
+              display={{ base: "none", md: "flex" }}
+            >
+              {Links.map((link) => (
+                <NavLink key={link}>{link}</NavLink>
+              ))}
+            </HStack>
+          </HStack>
+        </Flex>
 
-        <IconButton
-          display={{ base: "flex", md: "none" }}
-          icon={<Icon as={isOpen ? XIcon : MenuIcon} fontSize="3xl" />}
-          aria-label={
-            !isOpen ? "Open navigation menu" : "Close navigation menu"
-          }
-          onClick={isOpen ? onClose : onOpen}
-          variant="ghost"
-          colorScheme="whiteAlpha"
-          color="whiteAlpha.800"
-        />
-      </Flex>
-
-      <Box mx="-4">
-        <Collapse in={!isMobile || isOpen}>
-          <Flex flexDir="column" gap="3" pt="6">
-            {LinkItems.map((linkItem) => (
-              <NavItem key={linkItem.name} item={linkItem} />
-            ))}
-          </Flex>
-        </Collapse>
+        {isOpen ? (
+          <Box pb={4} display={{ md: "none" }}>
+            <Stack as={"nav"} spacing={4}>
+              {Links.map((link) => (
+                <NavLink key={link}>{link}</NavLink>
+              ))}
+            </Stack>
+          </Box>
+        ) : null}
       </Box>
-    </Box>
+    </>
   );
-};
-
-interface NavItemProps extends ButtonProps {
-  item: LinkItemProps;
 }
-
-const NavItem = ({ item, ...rest }: NavItemProps) => {
-  const { link, icon, name } = item;
-
-  const router = useRouter();
-  const isActive = router.pathname === link;
-
-  return (
-    <NextLink href={link} passHref>
-      <Button
-        as="a"
-        w="100%"
-        px="3"
-        variant="ghost"
-        size="lg"
-        colorScheme="whiteAlpha"
-        color="white"
-        justifyContent="flex-start"
-        isActive={isActive}
-        leftIcon={<Icon mr="4" fontSize="2xl" as={icon} />}
-        _hover={{ bg: "whiteAlpha.200" }}
-        {...rest}
-      >
-        {name}
-      </Button>
-    </NextLink>
-  );
-};
