@@ -9,8 +9,8 @@ function App() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-primary">emmett.dev</h1>
-      <button className="text-primary" onClick={toggleTheme}>Toggle Theme</button>
+      <h1 className="text-3xl text-primary font-tektur">emmett.dev</h1>
+      <button className="text-primary font-dm-sans" onClick={toggleTheme}>Toggle Theme</button>
     </>
   );
 }
