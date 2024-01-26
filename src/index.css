@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.dark {
+    --background: 39, 39, 42;
+    --primary: 255, 255, 255;
+}
+
+.light {
+    --background: 255, 255, 255;
+    --primary: 39, 39, 42;
+}
