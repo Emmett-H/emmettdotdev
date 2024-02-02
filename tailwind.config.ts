@@ -5,12 +5,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'tektur': ['Tektur', 'sans-serif'],
-        'dm-sans': ['DM Sans', 'sans-serif'],
+        tektur: ["Tektur", "sans-serif"],
+        "dm-sans": ["DM Sans", "sans-serif"],
       },
       colors: {
         background: "rgba(var(--background))",
-        "primary": "rgba(var(--primary))",
+        primary: "rgba(var(--primary))",
       },
     },
   },

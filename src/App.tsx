@@ -4,14 +4,17 @@ import "./App.css";
 function App() {
   const toggleTheme: MouseEventHandler<HTMLButtonElement> = () => {
     const isDark = document.documentElement.classList.toggle("dark");
-    localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+    localStorage.setItem("color-theme", isDark ? "dark" : "light");
   };
 
   return (
-    <>
-      <h1 className="text-3xl text-primary font-tektur">emmett.dev</h1>
-      <button className="text-primary font-dm-sans" onClick={toggleTheme}>Toggle Theme</button>
-    </>
+    <div className=" flex-col h-screen overflow-hidden flex justify-center items-center font-tektur">
+      <div className="typing-demo text-3xl text-primary font-tektur">emmett.dev</div>
+      <button className="text-primary font-dm-sans" onClick={toggleTheme}>
+        Toggle Theme
+      </button>
+    </div>
+
   );
 }
 
