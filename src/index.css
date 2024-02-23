@@ -3,21 +3,22 @@
 @tailwind utilities;
 
 .dark {
-  --background: 39, 39, 42;
-  --primary: 255, 255, 255;
+  --background: 240, 3.7%, 15.9%;
+  --primary: 0, 0%, 100%;
 }
 
 .light {
-  --background: 255, 255, 255;
-  --primary: 39, 39, 42;
+  --background: 0, 0%, 100%;
+  --primary: 240, 3.7%, 15.9%;
 }
 
 @layer components {
   .typing-demo {
     @apply overflow-hidden border-r-4 font-mono text-4xl whitespace-nowrap;
-    width: 0.1ch; /* Start with minimal width for caret */
-    animation: blink-caret 1s step-end infinite,
-      typing 2s steps(20) 1.7s 1 forwards; /* Increased steps for smoother typing */
+    width: 0.1ch;
+    animation:
+      blink-caret 1s step-end infinite,
+      typing 2s steps(20) 1.7s 1 forwards;
   }
 
   @keyframes typing {
@@ -30,6 +31,10 @@
   }
 
   @keyframes blink-caret {
+    0%,
+    100% {
+      border-color: var(--primary);
+    }
     50% {
       border-color: transparent;
     }
