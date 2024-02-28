@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useEffect } from "react";
 import "./App.css";
 
 function App() {
@@ -6,6 +6,15 @@ function App() {
     const isDark = document.documentElement.classList.toggle("dark");
     localStorage.setItem("color-theme", isDark ? "dark" : "light");
   };
+
+  useEffect(() => {
+    const currentTheme = localStorage.getItem("color-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    if (currentTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
 
   return (
     <div className=" flex-col h-screen overflow-hidden flex justify-center items-center font-tektur">
