@@ -46,8 +46,7 @@ function App() {
           }
         >
           <div
-            className={`text-3xl text-primary font-tektur ${animationState === "typing" ? "typing-demo" : ""
-              }`}
+            className={`text-3xl text-primary font-tektur typing-demo`}
           >
             emmett.dev
           </div>
