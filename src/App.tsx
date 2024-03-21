@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Header from "./components/ui/header";
 
 function App() {
   const [showOverlay, setShowOverlay] = useState(true);
@@ -38,32 +39,32 @@ function App() {
     <>
       {showOverlay && (
         <div
-          className="absolute inset-0 z-50 flex justify-center items-center bg-background"
+          className="absolute inset-0 z-50 flex items-center justify-center bg-background"
           style={
             animationState === "fadeOut"
               ? { animation: "fadeOut 1.5s forwards" }
               : {}
           }
         >
-          <div
-            className={`text-3xl text-primary font-tektur typing-demo`}
-          >
+          <div className={`typing-demo font-tektur text-3xl text-primary`}>
             emmett.dev
           </div>
         </div>
       )}
-      <div
-        className={`flex-col h-screen overflow-hidden flex justify-center items-center font-tektur ${showOverlay ? "hidden" : ""
-          } ${contentAnimation}`}
-        style={
-          contentAnimation === "fade-in"
-            ? { animation: "fadeIn 1.5s forwards" }
-            : {}
-        }
-      >
-        <button className="text-primary font-dm-sans" onClick={toggleTheme}>
-          Toggle Theme
-        </button>
+      <div className="flex min-h-screen flex-col">
+        <div className="fixed left-0 right-0 top-0 z-10">
+          <Header toggleTheme={toggleTheme} />
+        </div>
+        <div
+          className={`flex flex-grow items-center justify-center font-tektur ${showOverlay ? "hidden" : ""
+            } ${contentAnimation}`}
+          style={
+            contentAnimation === "fade-in"
+              ? { animation: "fadeIn 1.5s forwards" }
+              : {}
+          }
+        >
+        </div>
       </div>
     </>
   );

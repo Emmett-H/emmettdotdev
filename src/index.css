@@ -14,9 +14,10 @@
 
 @layer components {
   .typing-demo {
-    @apply overflow-hidden border-r-4 font-mono text-4xl whitespace-nowrap;
+    @apply overflow-hidden whitespace-nowrap border-r-4 font-mono text-4xl;
     width: 0.1ch;
-    animation: blink-caret 1s step-end infinite,
+    animation:
+      blink-caret 1s step-end infinite,
       typing 2s steps(20) 1.7s 1 forwards;
   }
 
@@ -58,5 +59,20 @@
 
   .fade-in {
     animation: fadeIn 1.5s forwards;
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .slide-down {
+    animation: slideDown 0.5s forwards;
   }
 }
