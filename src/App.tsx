@@ -13,13 +13,8 @@ function App() {
   };
 
   useEffect(() => {
-    const currentTheme =
-      localStorage.getItem("color-theme") ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
+    const currentTheme = localStorage.getItem("color-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     document.documentElement.classList.toggle("dark", currentTheme === "dark");
-
     if (!localStorage.getItem("animation-played")) {
       setTimeout(() => {
         setAnimationState("fadeOut");
@@ -51,7 +46,7 @@ function App() {
           </div>
         </div>
       )}
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col items-center justify-center">
         <div className="fixed left-0 right-0 top-0 z-10">
           <Header toggleTheme={toggleTheme} />
         </div>
@@ -63,8 +58,7 @@ function App() {
               ? { animation: "fadeIn 1.5s forwards" }
               : {}
           }
-        >
-        </div>
+        ></div>
       </div>
     </>
   );
