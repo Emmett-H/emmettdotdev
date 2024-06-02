@@ -46,8 +46,8 @@ function App() {
           </div>
         </div>
       )}
-      <div className="flex min-h-screen flex-col items-center justify-center">
-        <div className="fixed left-0 right-0 top-0 z-10">
+      <main className="flex items-center justify-between w-full flex-col p-8 min-h-screen">
+        <div className="w-full max-w-3xl">
           <Header toggleTheme={toggleTheme} />
         </div>
         <div
@@ -59,7 +59,7 @@ function App() {
               : {}
           }
         ></div>
-      </div>
+      </main>
     </>
   );
 }

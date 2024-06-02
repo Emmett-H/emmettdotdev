@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-
+import { useState, useEffect } from 'react';
 interface ToggleThemeProps {
     toggleTheme: () => void;
 }
@@ -16,8 +15,9 @@ const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
         setIsChecked(!isChecked);
         toggleTheme();
     };
+
     return (
-        <div className="toggleWrapper relative overflow-hidden py-40 px-80">
+        <div className="toggleWrapper relative overflow-hidden">
             <input
                 type="checkbox"
                 id="dn"
@@ -27,55 +27,45 @@ const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
             />
             <label
                 htmlFor="dn"
-                className={`toggle relative inline-block w-24 h-14 rounded-full cursor-pointer transition-colors duration-200 ease-cubic ${isChecked ? 'bg-blue-700' : 'bg-sky-400'
+                className={`toggle relative inline-block w-16 h-9 rounded-full cursor-pointer transition-colors duration-200 ease-cubic ${isChecked ? 'checked bg-slate-700' : 'bg-sky-200'
                     }`}
             >
                 <span
-                    className={`toggle__handler relative inline-block z-10 top-1 left-1 w-12 h-12 rounded-full shadow-md transition-all duration-400 ease-cubic ${isChecked
-                        ? 'bg-yellow-300 transform translate-x-10 rotate-0'
-                        : 'bg-orange-300 transform rotate-[-45deg]'
+                    className={`toggle__handler relative inline-block z-10 top-1 left-1 w-7 h-7 rounded-full shadow-md transition-all duration-400 ease-cubic ${isChecked
+                        ? 'bg-white transform translate-x-7 rotate-0'
+                        : 'bg-amber-200 transform rotate-[-45deg] sun'
                         }`}
                 >
                     <span
-                        className={`crater crater--1 absolute w-1 h-1 bg-orange-400 rounded-full transition-opacity duration-200 ease-in-out top-5 left-[10px] ${isChecked ? 'opacity-100' : 'opacity-0'
+                        className={`absolute w-0.5 h-0.5 bg-slate-400 rounded-full transition-opacity duration-200 ease-in-out top-3 left-1.5 ${isChecked ? 'opacity-100' : 'opacity-0'
                             }`}
                     ></span>
                     <span
-                        className={`crater crater--2 absolute w-1.5 h-1.5 bg-orange-400 rounded-full transition-opacity duration-200 ease-in-out top-7 left-[22px] ${isChecked ? 'opacity-100' : 'opacity-0'
+                        className={`absolute w-1 h-1 bg-slate-400 rounded-full transition-opacity duration-200 ease-in-out top-5 left-3 ${isChecked ? 'opacity-100' : 'opacity-0'
                             }`}
                     ></span>
                     <span
-                        className={`crater crater--3 absolute w-2 h-2 bg-orange-400 rounded-full transition-opacity duration-200 ease-in-out top-[10px] left-[25px] ${isChecked ? 'opacity-100' : 'opacity-0'
+                        className={`absolute w-1.5 h-1.5 bg-slate-400 rounded-full transition-opacity duration-200 ease-in-out top-2 left-3.5 ${isChecked ? 'opacity-100' : 'opacity-0'
                             }`}
                     ></span>
                 </span>
                 <span
-                    className={`star star--1 absolute w-8 h-1 bg-white top-[10px] left-[35px] z-0 ${isChecked ? 'w-0.5 h-0.5' : 'w-8 h-1'
-                        }`}
+                    className={` absolute w-0.5 h-0.5 bg-white top-2 left-5 transition-all duration-300 ease-cubic ${!isChecked && 'w-6'}`}
                 ></span>
                 <span
-                    className={`star star--2 absolute w-8 h-1 bg-white top-5 left-7 z-10 ${isChecked ? 'w-1 h-1 transform -translate-x-1.25' : 'w-8 h-1'
-                        }`}
+                    className='absolute w-0.5 h-0.5 bg-white top-6 left-3 transition-all duration-300 ease-cubic'
                 ></span>
                 <span
-                    className={`star star--3 absolute w-8 h-1 bg-white top-7 left-10 z-0 ${isChecked ? 'w-0.5 h-0.5 transform -translate-x-1.75' : 'w-8 h-1'
-                        }`}
+                    className={` absolute w-0.5 h-0.5 bg-white top-4 left-4 transition-all duration-300 ease-cubic ${!isChecked && 'w-6 top-5'}`}
                 ></span>
                 <span
-                    className={`star star--4 absolute w-0.5 h-0.5 bg-white top-4 left-3 z-0 transition-all duration-300 ease-cubic ${isChecked ? 'opacity-100 transform translate-x-0' : 'opacity-0 transform translate-x-1'
-                        }`}
+                    className={` absolute w-0.5 h-0.5 bg-white top-3 left-2 z-50 transition-all duration-300 ease-cubic ${!isChecked && 'w-4 left-5 top-3.5'}`}
                 ></span>
                 <span
-                    className={`star star--5 absolute w-0.75 h-0.75 bg-white top-8 left-[17px] z-0 transition-all duration-300 ease-cubic ${isChecked
-                        ? 'opacity-100 transform translate-x-0 delay-100'
-                        : 'opacity-0 transform translate-x-1'
-                        }`}
+                    className='absolute w-0.75 h-0.75 bg-white top-6 left-3 transition-all duration-300 ease-cubic'
                 ></span>
                 <span
-                    className={`star star--6 absolute w-0.5 h-0.5 bg-white top-9 left-7 z-0 transition-all duration-300 ease-cubic ${isChecked
-                        ? 'opacity-100 transform translate-x-0 delay-200'
-                        : 'opacity-0 transform translate-x-1'
-                        }`}
+                    className='absolute w-0.5 h-0.5 bg-white top-7 left-5 transition-all duration-300 ease-cubic'
                 ></span>
             </label>
         </div>
