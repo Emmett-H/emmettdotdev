@@ -1,20 +1,34 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/ui/header";
+import LinkedInIcon from "./components/ui/linkedinIcon"; // Adjust the path as needed
+import GitHubIcon from "./components/ui/githubIcon"; // Adjust the path as needed
 
 function App() {
+  const getInitialTheme = (): boolean => {
+    const savedTheme = localStorage.getItem("color-theme");
+    if (savedTheme) {
+      return savedTheme === "dark";
+    }
+    return true;
+  };
+
   const [showOverlay, setShowOverlay] = useState(true);
   const [animationState, setAnimationState] = useState("typing");
   const [contentAnimation, setContentAnimation] = useState("");
+  const [currentTheme, setCurrentTheme] = useState<boolean>(getInitialTheme);
 
   const toggleTheme = () => {
     const isDark = document.documentElement.classList.toggle("dark");
     localStorage.setItem("color-theme", isDark ? "dark" : "light");
+    setCurrentTheme(isDark);
   };
 
   useEffect(() => {
-    const currentTheme = localStorage.getItem("color-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    document.documentElement.classList.toggle("dark", currentTheme === "dark");
+    const initialTheme = localStorage.getItem("color-theme") || "dark";
+    document.documentElement.classList.toggle("dark", initialTheme === "dark");
+    setCurrentTheme(initialTheme === "dark");
+
     if (!localStorage.getItem("animation-played")) {
       setTimeout(() => {
         setAnimationState("fadeOut");
@@ -46,10 +60,45 @@ function App() {
           </div>
         </div>
       )}
-      <main className="flex items-center justify-between w-full flex-col p-8 min-h-screen">
+      <main className="flex min-h-screen w-full flex-col items-center justify-between p-8">
         <div className="w-full max-w-3xl">
           <Header toggleTheme={toggleTheme} />
+          <div className="flex flex-col justify-between py-10">
+            <img
+              className="h-20 w-20 rounded-full"
+              src="/emmett.png"
+              alt="Emmett profile picture"
+            />
+            <span className="mt-4 font-dm-sans text-xl">Emmett Harper</span>
+            <span
+              className={`font-dm-sans text-sm ${currentTheme ? "text-slate-300" : "text-slate-700"}`}
+            >
+              Lead Software Engineer
+            </span>
+            <div className="mt-4 flex space-x-6">
+              <a
+                href="https://www.linkedin.com/in/emmett-h-38479410a/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedInIcon />
+              </a>
+              <a
+                href="https://github.com/Emmett-H"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GitHubIcon />
+              </a>
+            </div>
+            <div className="my-8 w-full border-b"></div>
+          </div>
+          <p className="font-dm-sans font-light">
+            Passionate about crafting excellent software and empowering
+            engineering teams to excel.
+          </p>
         </div>
+
         <div
           className={`flex flex-grow items-center justify-center font-tektur ${showOverlay ? "hidden" : ""
             } ${contentAnimation}`}
