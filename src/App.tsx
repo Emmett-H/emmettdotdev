@@ -134,7 +134,7 @@ function App() {
               >cinch <span className="ml-2 mt-0.5"><CinchLogo width={50} height={25} />
                 </span></a>
             </li>
-            <li className="mb-1 ms-4">
+            <li className="mb-5 ms-4">
               <div className="absolute w-3 h-3 bg-gray-300 rounded-full mt-1.5 -start-1.5 "></div>
               <div className="text-md font-medium">UI Engineer</div>
               <a
@@ -142,7 +142,7 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mb-4 text-sm font-normal inline-flex"
-              >Thales <span className="ml-2 mt-0.5"><ThalesLogo width={60} height={40} />
+              >Thales <span className="ml-2 mt-0.5"><ThalesLogo width={50} height={13} />
                 </span></a>
             </li>
             <li className="mb-0 ms-4">
@@ -153,7 +153,7 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mb-4 text-sm font-normal inline-flex"
-              >Thales <span className="ml-2 mt-0.5"><ThalesLogo width={60} height={40} />
+              >Thales <span className="ml-2 mt-0.5"><ThalesLogo width={50} height={13} />
                 </span></a>
             </li>
 

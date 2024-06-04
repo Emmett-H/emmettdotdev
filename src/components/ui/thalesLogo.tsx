@@ -2,7 +2,7 @@ const ThalesLogo: React.FC<React.SVGProps<SVGSVGElement> & { width?: number; hei
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width={width} height={height}
-        viewBox="0 75 192.756 112.756"
+        viewBox="0 75 192 25"
         {...props}
     >
         <path
