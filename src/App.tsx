@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/ui/header";
-import LinkedInIcon from "./components/ui/linkedinIcon"; // Adjust the path as needed
-import GitHubIcon from "./components/ui/githubIcon"; // Adjust the path as needed
+import LinkedInIcon from "./components/ui/linkedinIcon";
+import GitHubIcon from "./components/ui/githubIcon";
+import OnTheBeachLogo from "./components/ui/onthebeachLogo";
+import CinchLogo from "./components/ui/cinchLogo";
+import ThalesLogo from "./components/ui/thalesLogo";
 
 function App() {
   const getInitialTheme = (): boolean => {
@@ -63,7 +66,7 @@ function App() {
       <main className="flex min-h-screen w-full flex-col items-center justify-between p-8">
         <div className="w-full max-w-3xl">
           <Header toggleTheme={toggleTheme} />
-          <div className="flex flex-col justify-between py-10">
+          <div className="flex flex-col justify-between pt-10 pb-5">
             <img
               className="h-20 w-20 rounded-full"
               src="/emmett.png"
@@ -95,8 +98,66 @@ function App() {
           </div>
           <p className="font-dm-sans font-light">
             Passionate about crafting excellent software and empowering
-            engineering teams to excel.
+            engineering teams to do the same.
           </p>
+          <h1 className="mb-4 mt-16 font-dm-sans text-lg font-bold">
+            Experience
+          </h1>
+          <ol className="relative border-s border-gray-200">
+            <li className="mb-5 ms-4">
+              <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-500 "></div>
+              <div className="flex flex-row items-center gap-2">
+                <div className="text-md font-medium">Engineering Lead</div>
+                <div className="inline-block rounded-full border px-1 py-0 text-xs uppercase ">
+                  current
+                </div>
+              </div>
+              <a
+                href="https://onthebeach.co.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mb-4 text-sm font-normal inline-flex"
+              >
+                On the Beach
+                <span className="ml-2"><OnTheBeachLogo width={50} height={20} />
+                </span>
+              </a>
+            </li>
+            <li className="mb-5 ms-4">
+              <div className="absolute w-3 h-3 bg-gray-300 rounded-full mt-1.5 -start-1.5 "></div>
+              <div className="text-md font-medium">Senior Software Engineer</div>
+              <a
+                href="https://cinch.co.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mb-4 text-sm font-normal inline-flex"
+              >cinch <span className="ml-2 mt-0.5"><CinchLogo width={50} height={25} />
+                </span></a>
+            </li>
+            <li className="mb-1 ms-4">
+              <div className="absolute w-3 h-3 bg-gray-300 rounded-full mt-1.5 -start-1.5 "></div>
+              <div className="text-md font-medium">UI Engineer</div>
+              <a
+                href="https://thalesgroup.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mb-4 text-sm font-normal inline-flex"
+              >Thales <span className="ml-2 mt-0.5"><ThalesLogo width={60} height={40} />
+                </span></a>
+            </li>
+            <li className="mb-0 ms-4">
+              <div className="absolute w-3 h-3 bg-gray-300 rounded-full mt-1.5 -start-1.5 "></div>
+              <div className="text-md font-medium">Graduate Software Engineer</div>
+              <a
+                href="https://thalesgroup.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mb-4 text-sm font-normal inline-flex"
+              >Thales <span className="ml-2 mt-0.5"><ThalesLogo width={60} height={40} />
+                </span></a>
+            </li>
+
+          </ol>
         </div>
 
         <div
