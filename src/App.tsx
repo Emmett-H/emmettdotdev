@@ -1,49 +1,49 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import Header from "./components/ui/header";
-import LinkedInIcon from "./components/ui/linkedinIcon";
-import GitHubIcon from "./components/ui/githubIcon";
-import OnTheBeachLogo from "./components/ui/onthebeachLogo";
-import CinchLogo from "./components/ui/cinchLogo";
-import ThalesLogo from "./components/ui/thalesLogo";
+import { useEffect, useState } from 'react';
+import './App.css';
+import Header from './components/ui/header';
+import LinkedInIcon from './components/ui/linkedinIcon';
+import GitHubIcon from './components/ui/githubIcon';
+import OnTheBeachLogo from './components/ui/onthebeachLogo';
+import CinchLogo from './components/ui/cinchLogo';
+import ThalesLogo from './components/ui/thalesLogo';
 
 function App() {
   const getInitialTheme = (): boolean => {
-    const savedTheme = localStorage.getItem("color-theme");
+    const savedTheme = localStorage.getItem('color-theme');
     if (savedTheme) {
-      return savedTheme === "dark";
+      return savedTheme === 'dark';
     }
     return true;
   };
 
   const [showOverlay, setShowOverlay] = useState(true);
-  const [animationState, setAnimationState] = useState("typing");
-  const [contentAnimation, setContentAnimation] = useState("");
+  const [animationState, setAnimationState] = useState('typing');
+  const [contentAnimation, setContentAnimation] = useState('');
   const [currentTheme, setCurrentTheme] = useState<boolean>(getInitialTheme);
 
   const toggleTheme = () => {
-    const isDark = document.documentElement.classList.toggle("dark");
-    localStorage.setItem("color-theme", isDark ? "dark" : "light");
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
     setCurrentTheme(isDark);
   };
 
   useEffect(() => {
-    const initialTheme = localStorage.getItem("color-theme") || "dark";
-    document.documentElement.classList.toggle("dark", initialTheme === "dark");
-    setCurrentTheme(initialTheme === "dark");
+    const initialTheme = localStorage.getItem('color-theme') || 'dark';
+    document.documentElement.classList.toggle('dark', initialTheme === 'dark');
+    setCurrentTheme(initialTheme === 'dark');
 
-    if (!localStorage.getItem("animation-played")) {
+    if (!localStorage.getItem('animation-played')) {
       setTimeout(() => {
-        setAnimationState("fadeOut");
+        setAnimationState('fadeOut');
         setTimeout(() => {
           setShowOverlay(false);
-          setContentAnimation("fade-in");
-          localStorage.setItem("animation-played", "true");
+          setContentAnimation('fade-in');
+          localStorage.setItem('animation-played', 'true');
         }, 1500);
       }, 4700);
     } else {
       setShowOverlay(false);
-      setContentAnimation("fade-in");
+      setContentAnimation('fade-in');
     }
   }, []);
 
@@ -53,8 +53,8 @@ function App() {
         <div
           className="absolute inset-0 z-50 flex items-center justify-center bg-background"
           style={
-            animationState === "fadeOut"
-              ? { animation: "fadeOut 1.5s forwards" }
+            animationState === 'fadeOut'
+              ? { animation: 'fadeOut 1.5s forwards' }
               : {}
           }
         >
@@ -66,15 +66,15 @@ function App() {
       <main className="flex min-h-screen w-full flex-col items-center justify-between p-8">
         <div className="w-full max-w-3xl">
           <Header toggleTheme={toggleTheme} />
-          <div className="flex flex-col justify-between pt-10 pb-5">
+          <div className="flex flex-col justify-between pb-5 pt-10 font-dm-sans">
             <img
               className="h-20 w-20 rounded-full"
               src="/emmett.png"
               alt="Emmett profile picture"
             />
-            <span className="mt-4 font-dm-sans text-xl">Emmett Harper</span>
+            <span className="mt-4  text-xl">Emmett Harper</span>
             <span
-              className={`font-dm-sans text-sm ${currentTheme ? "text-slate-300" : "text-slate-700"}`}
+              className={`text-sm ${currentTheme ? 'text-slate-300' : 'text-slate-700'}`}
             >
               Lead Software Engineer
             </span>
@@ -103,7 +103,7 @@ function App() {
           <h1 className="mb-4 mt-16 font-dm-sans text-lg font-bold">
             Experience
           </h1>
-          <ol className="relative border-s border-gray-200">
+          <ol className="relative border-s border-gray-200 font-dm-sans">
             <li className="mb-5 ms-4">
               <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-500 "></div>
               <div className="flex flex-row items-center gap-2">
@@ -116,56 +116,77 @@ function App() {
                 href="https://onthebeach.co.uk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mb-4 text-sm font-normal inline-flex"
+                className="mb-4 inline-flex text-sm font-normal"
               >
                 On the Beach
-                <span className="ml-2"><OnTheBeachLogo width={50} height={20} />
+                <span className="ml-2">
+                  <OnTheBeachLogo width={50} height={20} />
                 </span>
               </a>
             </li>
             <li className="mb-5 ms-4">
-              <div className="absolute w-3 h-3 bg-gray-300 rounded-full mt-1.5 -start-1.5 "></div>
-              <div className="text-md font-medium">Senior Software Engineer</div>
+              <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-300 "></div>
+              <div className="text-md font-medium">
+                Senior Software Engineer
+                <span className="ml-1 mt-1 text-xs">(2021 - 2023)</span>
+              </div>
               <a
                 href="https://cinch.co.uk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mb-4 text-sm font-normal inline-flex"
-              >cinch <span className="ml-2 mt-0.5"><CinchLogo width={50} height={25} />
-                </span></a>
+                className=" inline-flex text-sm font-normal"
+              >
+                cinch
+                <span className="ml-2 mt-0.5">
+                  <CinchLogo width={50} height={25} />
+                </span>
+              </a>
             </li>
             <li className="mb-5 ms-4">
-              <div className="absolute w-3 h-3 bg-gray-300 rounded-full mt-1.5 -start-1.5 "></div>
-              <div className="text-md font-medium">UI Engineer</div>
+              <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-300 "></div>
+              <div className="text-md font-medium">
+                UI Engineer
+                <span className="ml-1 mt-1 text-xs">(2021)</span>
+              </div>
               <a
                 href="https://thalesgroup.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mb-4 text-sm font-normal inline-flex"
-              >Thales <span className="ml-2 mt-0.5"><ThalesLogo width={50} height={13} />
-                </span></a>
+                className="mb-4 inline-flex text-sm font-normal"
+              >
+                Thales
+                <span className="ml-2 mt-0.5">
+                  <ThalesLogo width={50} height={13} />
+                </span>
+              </a>
             </li>
             <li className="mb-0 ms-4">
-              <div className="absolute w-3 h-3 bg-gray-300 rounded-full mt-1.5 -start-1.5 "></div>
-              <div className="text-md font-medium">Graduate Software Engineer</div>
+              <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-300 "></div>
+              <div className="text-md font-medium">
+                Software Engineer{' '}
+                <span className="ml-1 mt-1 text-xs">(2017 - 2021)</span>
+              </div>
               <a
                 href="https://thalesgroup.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mb-4 text-sm font-normal inline-flex"
-              >Thales <span className="ml-2 mt-0.5"><ThalesLogo width={50} height={13} />
-                </span></a>
+                className=" inline-flex text-sm font-normal"
+              >
+                Thales
+                <span className="ml-2 mt-0.5">
+                  <ThalesLogo width={50} height={13} />
+                </span>
+              </a>
             </li>
-
           </ol>
         </div>
 
         <div
-          className={`flex flex-grow items-center justify-center font-tektur ${showOverlay ? "hidden" : ""
+          className={`flex flex-grow items-center justify-center font-tektur ${showOverlay ? 'hidden' : ''
             } ${contentAnimation}`}
           style={
-            contentAnimation === "fade-in"
-              ? { animation: "fadeIn 1.5s forwards" }
+            contentAnimation === 'fade-in'
+              ? { animation: 'fadeIn 1.5s forwards' }
               : {}
           }
         ></div>
