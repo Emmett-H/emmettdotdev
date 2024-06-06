@@ -47,6 +47,36 @@ function App() {
     }
   }, []);
 
+  const experiences = [
+    {
+      title: "Senior Software Engineer",
+      company: "cinch",
+      logo: CinchLogo,
+      logoWidth: 50,
+      logoHeight: 25,
+      period: "2021 - 2023",
+      link: "https://cinch.co.uk",
+    },
+    {
+      title: "UI Engineer",
+      company: "Thales",
+      logo: ThalesLogo,
+      logoWidth: 50,
+      logoHeight: 13,
+      period: "2021",
+      link: "https://thalesgroup.com",
+    },
+    {
+      title: "Software Engineer",
+      company: "Thales",
+      logo: ThalesLogo,
+      logoWidth: 50,
+      logoHeight: 13,
+      period: "2017 - 2021",
+      link: "https://thalesgroup.com",
+    },
+  ];
+
   return (
     <>
       {showOverlay && (
@@ -72,7 +102,7 @@ function App() {
               src="/emmett.png"
               alt="Emmett profile picture"
             />
-            <span className="mt-4  text-xl">Emmett Harper</span>
+            <span className="mt-4 text-xl">Emmett Harper</span>
             <span
               className={`text-sm ${currentTheme ? 'text-slate-300' : 'text-slate-700'}`}
             >
@@ -105,10 +135,10 @@ function App() {
           </h1>
           <ol className="relative border-s border-gray-200 font-dm-sans">
             <li className="mb-5 ms-4">
-              <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-500 "></div>
+              <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-500"></div>
               <div className="flex flex-row items-center gap-2">
                 <div className="text-md font-medium">Engineering Lead</div>
-                <div className="inline-block rounded-full border px-1 py-0 text-xs uppercase ">
+                <div className="inline-block rounded-full border px-1 py-0 text-xs uppercase">
                   current
                 </div>
               </div>
@@ -124,60 +154,26 @@ function App() {
                 </span>
               </a>
             </li>
-            <li className="mb-5 ms-4">
-              <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-300 "></div>
-              <div className="text-md font-medium">
-                Senior Software Engineer
-                <span className="ml-1 mt-1 text-xs">(2021 - 2023)</span>
-              </div>
-              <a
-                href="https://cinch.co.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className=" inline-flex text-sm font-normal"
-              >
-                cinch
-                <span className="ml-2 mt-0.5">
-                  <CinchLogo width={50} height={25} />
-                </span>
-              </a>
-            </li>
-            <li className="mb-5 ms-4">
-              <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-300 "></div>
-              <div className="text-md font-medium">
-                UI Engineer
-                <span className="ml-1 mt-1 text-xs">(2021)</span>
-              </div>
-              <a
-                href="https://thalesgroup.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mb-4 inline-flex text-sm font-normal"
-              >
-                Thales
-                <span className="ml-2 mt-0.5">
-                  <ThalesLogo width={50} height={13} />
-                </span>
-              </a>
-            </li>
-            <li className="mb-0 ms-4">
-              <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-300 "></div>
-              <div className="text-md font-medium">
-                Software Engineer{' '}
-                <span className="ml-1 mt-1 text-xs">(2017 - 2021)</span>
-              </div>
-              <a
-                href="https://thalesgroup.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className=" inline-flex text-sm font-normal"
-              >
-                Thales
-                <span className="ml-2 mt-0.5">
-                  <ThalesLogo width={50} height={13} />
-                </span>
-              </a>
-            </li>
+            {experiences.map((exp, index) => (
+              <li className="mb-5 ms-4" key={index}>
+                <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-300"></div>
+                <div className="text-md font-medium">
+                  {exp.title}
+                  <span className="ml-1 mt-1 text-xs">({exp.period})</span>
+                </div>
+                <a
+                  href={exp.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex text-sm font-normal"
+                >
+                  {exp.company}
+                  <span className="ml-2 mt-0.5">
+                    <exp.logo width={exp.logoWidth} height={exp.logoHeight} />
+                  </span>
+                </a>
+              </li>
+            ))}
           </ol>
         </div>
 
