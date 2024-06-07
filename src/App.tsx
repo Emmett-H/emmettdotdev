@@ -118,6 +118,9 @@ function App() {
             Projects
           </h1>
           <ProjectsSection />
+          <h1 id="contact" className="mb-4 mt-16 font-dm-sans text-lg font-bold">
+            Contact
+          </h1>
         </div>
 
         <div
