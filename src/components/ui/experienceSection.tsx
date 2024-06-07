@@ -1,10 +1,10 @@
-// ExperienceSection.tsx
 import React from 'react';
-import CinchLogo from './cinchLogo';
-import ThalesLogo from './thalesLogo';
-import OnTheBeachLogo from './onthebeachLogo';
+import CinchLogo from './logos/cinchLogo';
+import ThalesLogo from './logos/thalesLogo';
+import OnTheBeachLogo from './logos/onthebeachLogo';
 
 interface Experience {
+    id: number;
     title: string;
     company: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,6 +17,7 @@ interface Experience {
 
 const experiences: Experience[] = [
     {
+        id: 1,
         title: "Senior Software Engineer",
         company: "cinch",
         logo: CinchLogo,
@@ -26,6 +27,7 @@ const experiences: Experience[] = [
         link: "https://cinch.co.uk",
     },
     {
+        id: 2,
         title: "UI Engineer",
         company: "Thales",
         logo: ThalesLogo,
@@ -35,6 +37,7 @@ const experiences: Experience[] = [
         link: "https://thalesgroup.com",
     },
     {
+        id: 3,
         title: "Software Engineer",
         company: "Thales",
         logo: ThalesLogo,
@@ -68,8 +71,8 @@ const ExperienceSection: React.FC = () => {
                     </span>
                 </a>
             </li>
-            {experiences.map((exp, index) => (
-                <li className="mb-5 ms-4" key={index}>
+            {experiences.map(exp => (
+                <li className="mb-5 ms-4" key={exp.id}>
                     <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-300"></div>
                     <div className="text-md font-medium">
                         {exp.title}

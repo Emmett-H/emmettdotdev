@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/ui/header';
-import LinkedInIcon from './components/ui/linkedinIcon';
-import GitHubIcon from './components/ui/githubIcon';
+import LinkedInIcon from './components/ui/logos/linkedinIcon';
+import GitHubIcon from './components/ui/logos/githubIcon';
 import ExperienceSection from './components/ui/experienceSection';
 import { TypeAnimation } from 'react-type-animation';
+import ProjectsSection from './components/ui/projectsSection';
 
 function App() {
   const getInitialTheme = (): boolean => {
@@ -113,6 +114,10 @@ function App() {
             Experience
           </h1>
           <ExperienceSection />
+          <h1 className="mb-4 mt-16 font-dm-sans text-lg font-bold">
+            Projects
+          </h1>
+          <ProjectsSection />
         </div>
 
         <div
