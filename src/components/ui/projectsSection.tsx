@@ -1,16 +1,17 @@
-import { motion } from 'framer-motion'
-import MoodylemonLogo from './logos/moodylemonLogo'
-import GhibliDigitalLogo from './logos/ghibliLogo'
-import JukeMusicLogo from './logos/jukeLogo'
-import McFarlandLogo from './logos/mcfarlandLogo'
-import EmmettLogo from './logos/emmettLogo'
-import QuestionLogo from './logos/questionLogo'
+import { motion } from 'framer-motion';
+import MoodylemonLogo from './logos/moodylemonLogo';
+import GhibliDigitalLogo from './logos/ghibliLogo';
+import JukeMusicLogo from './logos/jukeLogo';
+import McFarlandLogo from './logos/mcfarlandLogo';
+import EmmettLogo from './logos/emmettLogo';
+import QuestionLogo from './logos/questionLogo';
 
 const ProjectsData = [
     {
         id: 1,
         name: 'moody lemon',
-        description: 'A custom built headless Shopify e‑commerce swimwear business.',
+        description:
+            'A custom built headless Shopify e‑commerce swimwear business.',
         link: 'https://moodylemon.shop/',
         image: MoodylemonLogo,
     },
@@ -42,14 +43,7 @@ const ProjectsData = [
         link: 'https://www.emmett.dev/',
         image: EmmettLogo,
     },
-    {
-        id: 6,
-        name: 'Yours next?',
-        description: 'Your project could join this list, contact me below to find out more.',
-        link: 'https://www.emmett.dev/#contact',
-        image: QuestionLogo,
-    }
-]
+];
 
 const ProjectsSection = () => {
     return (
@@ -69,7 +63,7 @@ const ProjectsSection = () => {
                             className="mt-5 text-left"
                         >
                             <a target="_blank" rel="noopener noreferrer" href={project.link}>
-                                <project.image className='w-6 h-6 mb-1' />
+                                <project.image className="mb-1 h-6 w-6" />
                                 <div className="mb-1 text-sm font-medium text-gray-900 dark:text-gray-100">
                                     {project.name}
                                 </div>
@@ -78,11 +72,32 @@ const ProjectsSection = () => {
                                 </div>
                             </a>
                         </motion.div>
-                    )
+                    );
                 })}
+                <motion.div
+                    whileHover={{
+                        y: -8,
+                    }}
+                    transition={{
+                        type: 'spring',
+                        bounce: 0.7,
+                    }}
+                    className="mt-5 text-left"
+                >
+                    <a target="_blank" href="#contact">
+                        <QuestionLogo className="mb-1 h-6 w-6" />
+                        <div className="mb-1 underline text-sm font-medium text-gray-900 dark:text-gray-100">
+                            Yours next?
+                        </div>
+                        <div className="max-w-[250px] text-sm font-normal text-gray-500 dark:text-gray-400">
+                            Your project could join this list, contact me below to find out
+                            more.
+                        </div>
+                    </a>
+                </motion.div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ProjectsSection
+export default ProjectsSection;
