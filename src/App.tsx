@@ -6,6 +6,7 @@ import GitHubIcon from './components/ui/githubIcon';
 import OnTheBeachLogo from './components/ui/onthebeachLogo';
 import CinchLogo from './components/ui/cinchLogo';
 import ThalesLogo from './components/ui/thalesLogo';
+import { TypeAnimation } from 'react-type-animation';
 
 function App() {
   const getInitialTheme = (): boolean => {
@@ -88,9 +89,19 @@ function App() {
               : {}
           }
         >
-          <div className={`typing-demo font-tektur text-3xl text-primary`}>
-            emmett.dev
-          </div>
+          <TypeAnimation
+            sequence={[
+              1900,
+              'emmett.dev',
+              2000,
+            ]}
+            speed={{ type: 'keyStrokeDelayInMs', value: 160 }}
+
+            wrapper="div"
+            cursor={true}
+            repeat={0}
+            className="font-tektur text-3xl text-primary"
+          />
         </div>
       )}
       <main className="flex min-h-screen w-full flex-col items-center justify-between p-8">

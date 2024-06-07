@@ -13,33 +13,6 @@
 }
 
 @layer components {
-  .typing-demo {
-    @apply overflow-hidden whitespace-nowrap border-r-4 font-mono text-4xl;
-    width: 0;
-    animation:
-      blink-caret 1s step-end infinite,
-      typing 2s steps(20) 1.7s 1 forwards;
-  }
-
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 10ch;
-    }
-  }
-
-  @keyframes blink-caret {
-    0%,
-    100% {
-      border-color: var(--primary);
-    }
-    50% {
-      border-color: transparent;
-    }
-  }
-
   @keyframes fadeOut {
     from {
       opacity: 1;
@@ -60,20 +33,5 @@
 
   .fade-in {
     animation: fadeIn 1.5s forwards;
-  }
-
-  @keyframes slideDown {
-    from {
-      transform: translateY(-20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  .slide-down {
-    animation: slideDown 0.5s forwards;
   }
 }
