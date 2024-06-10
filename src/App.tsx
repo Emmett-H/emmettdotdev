@@ -150,7 +150,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              tailwind
+              tailwindCSS.
             </a>
           </p>
         </div>

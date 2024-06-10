@@ -5,6 +5,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Button } from "./button";
 import { Input } from "./input";
 import { Textarea } from "./textarea";
+import { useState } from "react";
 
 const formSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
@@ -13,6 +14,8 @@ const formSchema = z.object({
 });
 
 const ContactSection: React.FC = () => {
+    const [submissionStatus, setSubmissionStatus] = useState<"idle" | "success" | "error">("idle");
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -39,12 +42,13 @@ const ContactSection: React.FC = () => {
             });
 
             if (response.ok) {
-                console.log("Form submitted successfully");
+                setSubmissionStatus("success");
             } else {
-                console.error("Form submission failed");
+                setSubmissionStatus("error");
             }
         } catch (error) {
             console.error("An error occurred:", error);
+            setSubmissionStatus("error");
         }
     }
 
@@ -90,6 +94,13 @@ const ContactSection: React.FC = () => {
                         </FormItem>
                     )}
                 />
+
+                {submissionStatus === "success" && (
+                    <div className="dark:text-green-500 text-green-700">Form submitted successfully, I'll get back to you as soon as I can!</div>
+                )}
+                {submissionStatus === "error" && (
+                    <div className="text-red-500">Form submission failed. Please try again later or contact me directly at <a className="underline" href="mailto:emmett@emmett.dev">emmett@emmett.dev</a>.</div>
+                )}
                 <Button type="submit">Submit</Button>
             </form>
         </Form>
