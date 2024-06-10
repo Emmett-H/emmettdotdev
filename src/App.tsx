@@ -6,6 +6,7 @@ import GitHubIcon from './components/ui/logos/githubIcon';
 import ExperienceSection from './components/ui/experienceSection';
 import { TypeAnimation } from 'react-type-animation';
 import ProjectsSection from './components/ui/projectsSection';
+import ContactSection from './components/ui/contactSection';
 
 function App() {
   const getInitialTheme = (): boolean => {
@@ -59,13 +60,8 @@ function App() {
           }
         >
           <TypeAnimation
-            sequence={[
-              1900,
-              'emmett.dev',
-              2000,
-            ]}
+            sequence={[1900, 'emmett.dev', 2000]}
             speed={{ type: 'keyStrokeDelayInMs', value: 160 }}
-
             wrapper="div"
             cursor={true}
             repeat={0}
@@ -118,9 +114,45 @@ function App() {
             Projects
           </h1>
           <ProjectsSection />
-          <h1 id="contact" className="mb-4 mt-16 font-dm-sans text-lg font-bold">
+          <h1
+            id="contact"
+            className="mb-4 mt-16 font-dm-sans text-lg font-bold"
+          >
             Contact
           </h1>
+          <ContactSection />
+          <div className="mt-8 mb-4 w-full border-b"></div>
+          <p className="text-xs justify-center flex gap-0.5">
+            Built with:
+            <a
+              className='underline'
+              href="https://vitejs.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ViteJS,
+            </a>
+
+            <a
+              className='underline'
+
+              href="https://ui.shadcn.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              shadcn/ui
+            </a>
+            and
+            <a
+              className='underline'
+
+              href="https://tailwindcss.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              tailwind
+            </a>
+          </p>
         </div>
 
         <div

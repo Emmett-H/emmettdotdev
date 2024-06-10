@@ -11,14 +11,14 @@ const ProjectsData = [
         id: 1,
         name: 'moody lemon',
         description:
-            'A custom built headless Shopify e‑commerce swimwear business.',
+            'A custom headless Shopify store for a swimwear business.',
         link: 'https://moodylemon.shop/',
         image: MoodylemonLogo,
     },
     {
         id: 2,
         name: 'Juke Music',
-        description: 'Landing and contact page for a local band.',
+        description: 'Landing and contact page for a band.',
         link: 'https://www.jukemusicbelfast.com/',
         image: JukeMusicLogo,
     },
