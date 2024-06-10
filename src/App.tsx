@@ -122,7 +122,7 @@ function App() {
           </h1>
           <ContactSection />
           <div className="mt-8 mb-4 w-full border-b"></div>
-          <p className="text-xs justify-center flex gap-0.5">
+          <p className="text-xs justify-center flex gap-1">
             Built with:
             <a
               className='underline'

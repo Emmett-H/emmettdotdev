@@ -90,8 +90,7 @@ const ProjectsSection = () => {
                             Yours next?
                         </div>
                         <div className="max-w-[250px] text-sm font-normal text-gray-500 dark:text-gray-400">
-                            Your project could join this list, contact me below to find out
-                            more.
+                            Your project could join this list, contact me below ↓ or at <a className='underline' href="mailto:emmett@emmett.dev">emmett@emmett.dev</a> to find out more.
                         </div>
                     </a>
                 </motion.div>

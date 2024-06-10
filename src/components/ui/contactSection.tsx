@@ -22,8 +22,30 @@ const ContactSection: React.FC = () => {
         },
     });
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        const formData = new FormData();
+        formData.append("access_key", "8bced1a2-7a95-4706-86cd-5927e1e8189c"); //Fine to be public as only email address key
+        formData.append("subject", "New Submission from emmett.dev");
+        formData.append("from_name", "emmett.dev");
+        formData.append("replyto", values.emailAddress);
+        formData.append("name", values.name);
+        formData.append("email", values.emailAddress);
+        formData.append("message", values.message);
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                console.log("Form submitted successfully");
+            } else {
+                console.error("Form submission failed");
+            }
+        } catch (error) {
+            console.error("An error occurred:", error);
+        }
     }
 
     return (
