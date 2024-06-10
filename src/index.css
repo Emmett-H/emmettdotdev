@@ -12,6 +12,10 @@
   --primary: 240, 3.7%, 15.9%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer components {
   @keyframes fadeOut {
     from {
