@@ -48,7 +48,7 @@ const ContactSection: React.FC = () => {
             if (response.ok) {
                 toast({
                     title: "Success",
-                    description: "Form submitted successfully, I'll get back to you soon.",
+                    description: "Form submitted successfully, I'll get back to you as soon as I can.",
                     variant: "success",
                     duration: 3000,
                 });
