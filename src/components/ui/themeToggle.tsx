@@ -14,6 +14,19 @@ const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
         updateThemeColor(currentTheme);
     }, []);
 
+    useEffect(() => {
+        const updateThemeColorOnScroll = () => {
+            const currentTheme = isChecked ? 'dark' : 'light';
+            updateThemeColor(currentTheme);
+        };
+
+        window.addEventListener('scroll', updateThemeColorOnScroll);
+
+        return () => {
+            window.removeEventListener('scroll', updateThemeColorOnScroll);
+        };
+    }, [isChecked]);
+
     const updateThemeColor = (theme: string) => {
         const themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
         if (themeColorMetaTag) {
