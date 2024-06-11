@@ -6,6 +6,7 @@ import { Button } from "./button";
 import { Input } from "./input";
 import { Textarea } from "./textarea";
 import { useToast } from "./use-toast";
+import { useState } from "react";
 
 const formSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
@@ -14,6 +15,8 @@ const formSchema = z.object({
 });
 
 const ContactSection: React.FC = () => {
+    const [isLoading, setIsLoading] = useState(false);
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -26,6 +29,7 @@ const ContactSection: React.FC = () => {
     const { toast } = useToast();
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
+        setIsLoading(true);
         const formData = new FormData();
         formData.append("access_key", "8bced1a2-7a95-4706-86cd-5927e1e8189c"); //Fine to be public as only email address key
         formData.append("subject", "New Submission from emmett.dev");
@@ -46,7 +50,7 @@ const ContactSection: React.FC = () => {
                     title: "Success",
                     description: "Form submitted successfully, I'll get back to you soon.",
                     variant: "success",
-                    duration: 3000
+                    duration: 3000,
                 });
                 form.reset();
             } else {
@@ -54,7 +58,7 @@ const ContactSection: React.FC = () => {
                     title: "Error",
                     description: "Form submission failed. Please try again later or contact me directly at emmett@emmett.dev",
                     variant: "destructive",
-                    duration: 3000
+                    duration: 3000,
                 });
             }
         } catch (error) {
@@ -63,8 +67,10 @@ const ContactSection: React.FC = () => {
                 title: "Error",
                 description: "Form submission failed. Please try again later.",
                 variant: "destructive",
-                duration: 3000
+                duration: 3000,
             });
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -110,7 +116,15 @@ const ContactSection: React.FC = () => {
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit" disabled={isLoading}>
+                    {isLoading ? (
+                        <>
+                            Submitting...
+                        </>
+                    ) : (
+                        "Submit"
+                    )}
+                </Button>
             </form>
         </Form>
     );
