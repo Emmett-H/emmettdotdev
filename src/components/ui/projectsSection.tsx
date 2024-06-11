@@ -86,7 +86,7 @@ const ProjectsSection = () => {
                 >
                     <a href="#contact">
                         <QuestionLogo className="mb-1 h-6 w-6" />
-                        <div className="mb-1 underline text-sm font-medium text-gray-900 dark:text-gray-100">
+                        <div className="mb-1 underline text-sm font-medium text-gray-900 dark:text-gray-100 underline-offset-4 decoration-red-500 decoration-2">
                             Yours next?
                         </div>
                         <div className="max-w-[250px] text-sm font-normal text-gray-500 dark:text-gray-400">
