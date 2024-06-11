@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+
 interface ToggleThemeProps {
     toggleTheme: () => void;
 }
+
 
 const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
     const [isChecked, setIsChecked] = useState(false);
@@ -9,11 +11,25 @@ const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
     useEffect(() => {
         const currentTheme = localStorage.getItem('color-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         setIsChecked(currentTheme === 'dark');
+        updateThemeColor(currentTheme);
     }, []);
 
+    const updateThemeColor = (theme: string) => {
+        const themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
+        if (themeColorMetaTag) {
+            if (theme === 'dark') {
+                themeColorMetaTag.setAttribute('content', 'hsl(240, 3.7%, 15.9%)'); // Dark mode background color
+            } else {
+                themeColorMetaTag.setAttribute('content', 'hsl(0, 0%, 100%)'); // Light mode background color
+            }
+        }
+    };
+
     const handleToggle = () => {
+        const newTheme = isChecked ? 'light' : 'dark';
         setIsChecked(!isChecked);
         toggleTheme();
+        updateThemeColor(newTheme);
     };
 
     return (
