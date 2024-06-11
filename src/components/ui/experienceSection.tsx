@@ -2,6 +2,7 @@ import React from 'react';
 import CinchLogo from './logos/cinchLogo';
 import ThalesLogo from './logos/thalesLogo';
 import OnTheBeachLogo from './logos/onthebeachLogo';
+import { motion } from 'framer-motion';
 
 interface Experience {
     id: number;
@@ -66,32 +67,51 @@ const ExperienceSection: React.FC = () => {
                     className="mb-4 inline-flex text-sm font-normal"
                 >
                     On the Beach
-                    <span className="ml-2">
+
+                    <motion.div
+                        className="ml-2"
+                        whileHover={{
+                            y: -6,
+                        }}
+                        transition={{
+                            type: 'spring',
+                            bounce: 0.4,
+                        }}>
                         <OnTheBeachLogo width={50} height={20} />
-                    </span>
+                    </motion.div>
                 </a>
             </li>
-            {experiences.map(exp => (
-                <li className="mb-5 ms-4" key={exp.id}>
-                    <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-300"></div>
-                    <div className="text-md font-medium">
-                        {exp.title}
-                        <span className="ml-1 mt-1 text-xs">({exp.period})</span>
-                    </div>
-                    <a
-                        href={exp.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex text-sm font-normal"
-                    >
-                        {exp.company}
-                        <span className="ml-2 mt-0.5">
-                            <exp.logo width={exp.logoWidth} height={exp.logoHeight} />
-                        </span>
-                    </a>
-                </li>
-            ))}
-        </ol>
+            {
+                experiences.map(exp => (
+                    <li className="mb-5 ms-4" key={exp.id}>
+                        <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-300"></div>
+                        <div className="text-md font-medium">
+                            {exp.title}
+                            <span className="ml-1 mt-1 text-xs">({exp.period})</span>
+                        </div>
+                        <a
+                            href={exp.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex text-sm font-normal"
+                        >
+                            {exp.company}
+                            <motion.div
+                                className="ml-2 mt-0.5"
+                                whileHover={{
+                                    y: -6,
+                                }}
+                                transition={{
+                                    type: 'spring',
+                                    bounce: 0.4,
+                                }}>
+                                <exp.logo width={exp.logoWidth} height={exp.logoHeight} />
+                            </motion.div>
+                        </a>
+                    </li>
+                ))
+            }
+        </ol >
     );
 };
 

@@ -17,19 +17,6 @@ const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
         updateThemeColor(currentTheme);
     }, []);
 
-    useEffect(() => {
-        const updateThemeColorOnScroll = () => {
-            const currentTheme = isChecked ? 'dark' : 'light';
-            updateThemeColor(currentTheme);
-        };
-
-        window.addEventListener('scroll', updateThemeColorOnScroll);
-
-        return () => {
-            window.removeEventListener('scroll', updateThemeColorOnScroll);
-        };
-    }, [isChecked]);
-
     const updateThemeColor = (theme: string) => {
         const themeColorMetaTag = document.querySelector(
             'meta[name="theme-color"]',
@@ -66,8 +53,8 @@ const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
             >
                 <span
                     className={`toggle__handler duration-400 ease-cubic relative left-1 top-1 z-10 inline-block h-7 w-7 rounded-full shadow-md transition-all ${isChecked
-                            ? 'translate-x-7 rotate-0 transform bg-white'
-                            : 'sun rotate-[-45deg] transform bg-amber-200'
+                        ? 'translate-x-7 rotate-0 transform bg-white'
+                        : 'sun rotate-[-45deg] transform bg-amber-200'
                         }`}
                 >
                     <span
