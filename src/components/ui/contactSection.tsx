@@ -5,7 +5,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Button } from "./button";
 import { Input } from "./input";
 import { Textarea } from "./textarea";
-import { useState } from "react";
+import { useToast } from "./use-toast";
 
 const formSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
@@ -14,8 +14,6 @@ const formSchema = z.object({
 });
 
 const ContactSection: React.FC = () => {
-    const [submissionStatus, setSubmissionStatus] = useState<"idle" | "success" | "error">("idle");
-
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -24,6 +22,8 @@ const ContactSection: React.FC = () => {
             message: "",
         },
     });
+
+    const { toast } = useToast();
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         const formData = new FormData();
@@ -42,13 +42,29 @@ const ContactSection: React.FC = () => {
             });
 
             if (response.ok) {
-                setSubmissionStatus("success");
+                toast({
+                    title: "Success",
+                    description: "Form submitted successfully, I'll get back to you soon.",
+                    variant: "success",
+                    duration: 3000
+                });
+                form.reset();
             } else {
-                setSubmissionStatus("error");
+                toast({
+                    title: "Error",
+                    description: "Form submission failed. Please try again later or contact me directly at emmett@emmett.dev",
+                    variant: "destructive",
+                    duration: 3000
+                });
             }
         } catch (error) {
             console.error("An error occurred:", error);
-            setSubmissionStatus("error");
+            toast({
+                title: "Error",
+                description: "Form submission failed. Please try again later.",
+                variant: "destructive",
+                duration: 3000
+            });
         }
     }
 
@@ -94,13 +110,6 @@ const ContactSection: React.FC = () => {
                         </FormItem>
                     )}
                 />
-
-                {submissionStatus === "success" && (
-                    <div className="dark:text-green-500 text-green-700">Form submitted successfully, I'll get back to you as soon as I can!</div>
-                )}
-                {submissionStatus === "error" && (
-                    <div className="text-red-500">Form submission failed. Please try again later or contact me directly at <a className="underline" href="mailto:emmett@emmett.dev">emmett@emmett.dev</a>.</div>
-                )}
                 <Button type="submit">Submit</Button>
             </form>
         </Form>
