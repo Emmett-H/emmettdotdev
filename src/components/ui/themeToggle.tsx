@@ -14,26 +14,13 @@ const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
         updateThemeColor(currentTheme);
     }, []);
 
-    useEffect(() => {
-        const updateThemeColorOnScroll = () => {
-            const currentTheme = isChecked ? 'dark' : 'light';
-            updateThemeColor(currentTheme);
-        };
-
-        window.addEventListener('scroll', updateThemeColorOnScroll);
-
-        return () => {
-            window.removeEventListener('scroll', updateThemeColorOnScroll);
-        };
-    }, [isChecked]);
-
     const updateThemeColor = (theme: string) => {
         const themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
         if (themeColorMetaTag) {
             if (theme === 'dark') {
-                themeColorMetaTag.setAttribute('content', 'hsl(240, 3.7%, 15.9%)'); // Dark mode background color
+                themeColorMetaTag.setAttribute('content', 'hsl(240, 3.7%, 15.9%)');
             } else {
-                themeColorMetaTag.setAttribute('content', 'hsl(0, 0%, 100%)'); // Light mode background color
+                themeColorMetaTag.setAttribute('content', 'hsl(0, 0%, 100%)');
             }
         }
     };
