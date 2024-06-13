@@ -31,7 +31,7 @@ const ContactSection: React.FC = () => {
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsLoading(true);
         const formData = new FormData();
-        formData.append("access_key", "8bced1a2-7a95-4706-86cd-5927e1e8189c"); //Fine to be public as only email address key
+        formData.append("access_key", "f5df66ad-b4a6-4ea2-ade6-2f1593adbbcf"); //Fine to be public as only email address key
         formData.append("subject", "New Submission from emmett.dev");
         formData.append("from_name", "emmett.dev");
         formData.append("replyto", values.emailAddress);
