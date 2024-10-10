@@ -17,9 +17,9 @@ const ProjectsData = [
     },
     {
         id: 2,
-        name: 'Juke Music',
+        name: 'Juke The Band',
         description: 'Landing and contact page for a band.',
-        link: 'https://www.jukemusicbelfast.com/',
+        link: 'https://www.juketheband.co.uk',
         image: JukeMusicLogo,
     },
     {
