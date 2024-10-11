@@ -26,7 +26,7 @@ const ProjectsData = [
         id: 3,
         name: 'Ghibli Digital',
         description: 'Desert themed marketing agency landing page.',
-        link: 'https://ghiblidigital.co.uk',
+        link: 'https://ghibli-digital.netlify.app/',
         image: GhibliDigitalLogo,
     },
     {
