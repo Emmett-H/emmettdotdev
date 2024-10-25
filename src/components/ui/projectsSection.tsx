@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import MoodylemonLogo from './logos/moodylemonLogo';
+//import MoodylemonLogo from './logos/moodylemonLogo';
 import GhibliDigitalLogo from './logos/ghibliLogo';
 import JukeMusicLogo from './logos/jukeLogo';
 import McFarlandLogo from './logos/mcfarlandLogo';
