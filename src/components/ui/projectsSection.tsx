@@ -7,14 +7,14 @@ import EmmettLogo from './logos/emmettLogo';
 import QuestionLogo from './logos/questionLogo';
 
 const ProjectsData = [
-    {
-        id: 1,
-        name: 'moody lemon',
-        description:
-            'A custom headless Shopify store for a swimwear business.',
-        link: 'https://moodylemon.shop/',
-        image: MoodylemonLogo,
-    },
+    // {
+    //     id: 1,
+    //     name: 'moody lemon (',
+    //     description:
+    //         'A custom headless Shopify store for a swimwear business.',
+    //     link: 'https://moodylemon.shop/',
+    //     image: MoodylemonLogo,
+    // },
     {
         id: 2,
         name: 'Juke The Band',
