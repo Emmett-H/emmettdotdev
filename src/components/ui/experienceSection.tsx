@@ -2,6 +2,7 @@ import React from 'react';
 import CinchLogo from './logos/cinchLogo';
 import ThalesLogo from './logos/thalesLogo';
 import OnTheBeachLogo from './logos/onthebeachLogo';
+import CleoLogo from './logos/cleoLogo';
 import { motion } from 'framer-motion';
 
 interface Experience {
@@ -19,6 +20,16 @@ interface Experience {
 const experiences: Experience[] = [
     {
         id: 1,
+        title: "Engineering Lead",
+        company: "On the Beach",
+        logo: OnTheBeachLogo,
+        logoWidth: 50,
+        logoHeight: 20,
+        period: "2023 - 2025",
+        link: "https://onthebeach.co.uk",
+    },
+    {
+        id: 2,
         title: "Senior Software Engineer",
         company: "cinch",
         logo: CinchLogo,
@@ -28,7 +39,7 @@ const experiences: Experience[] = [
         link: "https://cinch.co.uk",
     },
     {
-        id: 2,
+        id: 3,
         title: "UI Engineer",
         company: "Thales",
         logo: ThalesLogo,
@@ -38,7 +49,7 @@ const experiences: Experience[] = [
         link: "https://thalesgroup.com",
     },
     {
-        id: 3,
+        id: 4,
         title: "Software Engineer",
         company: "Thales",
         logo: ThalesLogo,
@@ -55,19 +66,18 @@ const ExperienceSection: React.FC = () => {
             <li className="mb-5 ms-4">
                 <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-500"></div>
                 <div className="flex flex-row items-center gap-2">
-                    <div className="text-md font-medium">Engineering Lead</div>
+                    <div className="text-md font-medium">Senior Software Engineer</div>
                     <div className="inline-block rounded-full border px-1 py-0 text-xs uppercase">
                         current
                     </div>
                 </div>
                 <a
-                    href="https://onthebeach.co.uk"
+                    href="https://web.meetcleo.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mb-4 inline-flex text-sm font-normal"
+                    className="inline-flex text-sm font-normal"
                 >
-                    On the Beach
-
+                    Cleo
                     <motion.div
                         className="ml-2"
                         whileHover={{
@@ -77,7 +87,7 @@ const ExperienceSection: React.FC = () => {
                             type: 'spring',
                             bounce: 0.4,
                         }}>
-                        <OnTheBeachLogo width={50} height={20} />
+                        <CleoLogo width={50} height={20} />
                     </motion.div>
                 </a>
             </li>
