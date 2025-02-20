@@ -82,7 +82,7 @@ function App() {
             <span
               className={`text-sm ${currentTheme ? 'text-slate-300' : 'text-slate-700'}`}
             >
-              Lead Software Engineer
+              Lead/Senior Software Engineer
             </span>
             <div className="mt-4 flex space-x-6">
               <a
