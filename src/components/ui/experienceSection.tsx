@@ -17,9 +17,31 @@ interface Experience {
     link: string;
 }
 
+// Uncomment and update when starting a new role:
+// {
+//     id: 0,
+//     title: "Job Title",
+//     company: "Company",
+//     logo: ...,
+//     logoWidth: 50,
+//     logoHeight: 20,
+//     period: "2025 - present",
+//     link: "https://...",
+// },
+
 const experiences: Experience[] = [
     {
         id: 1,
+        title: "Senior Software Engineer",
+        company: "Cleo",
+        logo: CleoLogo,
+        logoWidth: 50,
+        logoHeight: 20,
+        period: "Feb 2025 - Oct 2025",
+        link: "https://web.meetcleo.com/",
+    },
+    {
+        id: 3,
         title: "Engineering Lead",
         company: "On the Beach",
         logo: OnTheBeachLogo,
@@ -29,7 +51,7 @@ const experiences: Experience[] = [
         link: "https://onthebeach.co.uk",
     },
     {
-        id: 2,
+        id: 4,
         title: "Senior Software Engineer",
         company: "cinch",
         logo: CinchLogo,
@@ -39,7 +61,7 @@ const experiences: Experience[] = [
         link: "https://cinch.co.uk",
     },
     {
-        id: 3,
+        id: 5,
         title: "UI Engineer",
         company: "Thales",
         logo: ThalesLogo,
@@ -49,7 +71,7 @@ const experiences: Experience[] = [
         link: "https://thalesgroup.com",
     },
     {
-        id: 4,
+        id: 6,
         title: "Software Engineer",
         company: "Thales",
         logo: ThalesLogo,
@@ -63,34 +85,6 @@ const experiences: Experience[] = [
 const ExperienceSection: React.FC = () => {
     return (
         <ol className="relative border-s border-gray-200 font-dm-sans">
-            <li className="mb-5 ms-4">
-                <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full bg-gray-500"></div>
-                <div className="flex flex-row items-center gap-2">
-                    <div className="text-md font-medium">Senior Software Engineer</div>
-                    <div className="inline-block rounded-full border px-1 py-0 text-xs uppercase">
-                        current
-                    </div>
-                </div>
-                <a
-                    href="https://web.meetcleo.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex text-sm font-normal"
-                >
-                    Cleo
-                    <motion.div
-                        className="ml-2"
-                        whileHover={{
-                            y: -6,
-                        }}
-                        transition={{
-                            type: 'spring',
-                            bounce: 0.4,
-                        }}>
-                        <CleoLogo width={50} height={20} />
-                    </motion.div>
-                </a>
-            </li>
             {
                 experiences.map(exp => (
                     <li className="mb-5 ms-4" key={exp.id}>
