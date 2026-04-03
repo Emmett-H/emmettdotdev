@@ -28,7 +28,7 @@ const experiences: Experience[] = [
         logoWidth: 22,
         logoHeight: 22,
         period: "Apr 2026 - present",
-        link: "https://twocircles.com",
+        link: "https://twocircles.com/au/",
     },
     {
         id: 1,
