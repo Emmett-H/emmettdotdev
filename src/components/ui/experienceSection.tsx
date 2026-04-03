@@ -3,6 +3,7 @@ import CinchLogo from './logos/cinchLogo';
 import ThalesLogo from './logos/thalesLogo';
 import OnTheBeachLogo from './logos/onthebeachLogo';
 import CleoLogo from './logos/cleoLogo';
+import TwoCirclesLogo from './logos/twoCirclesLogo';
 import { motion } from 'framer-motion';
 
 interface Experience {
@@ -17,19 +18,18 @@ interface Experience {
     link: string;
 }
 
-// Uncomment and update when starting a new role:
-// {
-//     id: 0,
-//     title: "Job Title",
-//     company: "Company",
-//     logo: ...,
-//     logoWidth: 50,
-//     logoHeight: 20,
-//     period: "2025 - present",
-//     link: "https://...",
-// },
 
 const experiences: Experience[] = [
+    {
+        id: 0,
+        title: "Software Engineer (contract)",
+        company: "Two Circles",
+        logo: TwoCirclesLogo,
+        logoWidth: 22,
+        logoHeight: 22,
+        period: "Apr 2026 - present",
+        link: "https://twocircles.com",
+    },
     {
         id: 1,
         title: "Senior Software Engineer",
