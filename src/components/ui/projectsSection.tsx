@@ -5,6 +5,7 @@ import JukeMusicLogo from './logos/jukeLogo';
 import McFarlandLogo from './logos/mcfarlandLogo';
 import EmmettLogo from './logos/emmettLogo';
 import QuestionLogo from './logos/questionLogo';
+import CaffreeLogo from './logos/caffreeLogo';
 
 const ProjectsData = [
     // {
@@ -15,6 +16,13 @@ const ProjectsData = [
     //     link: 'https://moodylemon.shop/',
     //     image: MoodylemonLogo,
     // },
+    {
+        id: 6,
+        name: 'Caffree',
+        description: 'iOS caffeine management app for better sleep.',
+        link: 'https://www.caffree.app/',
+        image: CaffreeLogo,
+    },
     {
         id: 2,
         name: 'Juke The Band',
