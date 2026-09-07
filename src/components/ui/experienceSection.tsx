@@ -22,7 +22,7 @@ interface Experience {
 const experiences: Experience[] = [
     {
         id: 0,
-        title: "Software Engineer (contract)",
+        title: "Senior Software Engineer (contract)",
         company: "Two Circles",
         logo: TwoCirclesLogo,
         logoWidth: 22,

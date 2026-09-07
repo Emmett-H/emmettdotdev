@@ -6,6 +6,7 @@ import McFarlandLogo from './logos/mcfarlandLogo';
 import EmmettLogo from './logos/emmettLogo';
 import QuestionLogo from './logos/questionLogo';
 import CaffreeLogo from './logos/caffreeLogo';
+import BallNollyLogo from './logos/ballnollyLogo';
 
 const ProjectsData = [
     // {
@@ -16,6 +17,14 @@ const ProjectsData = [
     //     link: 'https://moodylemon.shop/',
     //     image: MoodylemonLogo,
     // },
+    {
+        id: 7,
+        name: 'BallNolly',
+        description:
+            'Football trivia games with daily, unlimited and multiplayer modes.',
+        link: 'https://ballnolly.games/',
+        image: BallNollyLogo,
+    },
     {
         id: 6,
         name: 'Caffree',
