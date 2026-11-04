@@ -16,7 +16,38 @@ html {
   scroll-behavior: smooth;
 }
 
+html.intro-active,
+html.intro-active body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 @layer components {
+  .intro-overlay {
+    isolation: isolate;
+    touch-action: none;
+    overscroll-behavior: none;
+  }
+
+  .intro-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: inherit;
+    /* Cover the area behind mobile browser controls as they expand/collapse. */
+    min-height: 100vh;
+    min-height: 100lvh;
+  }
+
+  .page-content {
+    padding: 2rem;
+    padding-top: max(2rem, env(safe-area-inset-top, 0px));
+    padding-right: max(2rem, env(safe-area-inset-right, 0px));
+    padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px));
+    padding-left: max(2rem, env(safe-area-inset-left, 0px));
+  }
+
   @keyframes fadeOut {
     from {
       opacity: 1;

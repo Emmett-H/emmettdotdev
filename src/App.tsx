@@ -17,7 +17,9 @@ function App() {
     return true;
   };
 
-  const [showOverlay, setShowOverlay] = useState(true);
+  const [showOverlay, setShowOverlay] = useState(
+    () => !localStorage.getItem('animation-played'),
+  );
   const [animationState, setAnimationState] = useState('typing');
   const [contentAnimation, setContentAnimation] = useState('');
   const [currentTheme, setCurrentTheme] = useState<boolean>(getInitialTheme);
@@ -32,27 +34,36 @@ function App() {
     const initialTheme = localStorage.getItem('color-theme') || 'dark';
     document.documentElement.classList.toggle('dark', initialTheme === 'dark');
     setCurrentTheme(initialTheme === 'dark');
-
-    if (!localStorage.getItem('animation-played')) {
-      setTimeout(() => {
-        setAnimationState('fadeOut');
-        setTimeout(() => {
-          setShowOverlay(false);
-          setContentAnimation('fade-in');
-          localStorage.setItem('animation-played', 'true');
-        }, 1500);
-      }, 4700);
-    } else {
-      setShowOverlay(false);
-      setContentAnimation('fade-in');
-    }
   }, []);
+
+  useEffect(() => {
+    if (!showOverlay) {
+      setContentAnimation('fade-in');
+      return;
+    }
+
+    document.documentElement.classList.add('intro-active');
+
+    const fadeTimeout = window.setTimeout(() => {
+      setAnimationState('fadeOut');
+    }, 4700);
+    const dismissTimeout = window.setTimeout(() => {
+      setShowOverlay(false);
+      localStorage.setItem('animation-played', 'true');
+    }, 6200);
+
+    return () => {
+      window.clearTimeout(fadeTimeout);
+      window.clearTimeout(dismissTimeout);
+      document.documentElement.classList.remove('intro-active');
+    };
+  }, [showOverlay]);
 
   return (
     <>
       {showOverlay && (
         <div
-          className="absolute inset-0 z-50 flex items-center justify-center bg-background"
+          className="intro-overlay fixed inset-0 z-50 flex items-center justify-center bg-background"
           style={
             animationState === 'fadeOut'
               ? { animation: 'fadeOut 1.5s forwards' }
@@ -69,7 +80,10 @@ function App() {
           />
         </div>
       )}
-      <main className="flex min-h-screen w-full flex-col items-center justify-between p-8">
+      <main
+        className="page-content flex min-h-screen w-full flex-col items-center justify-between"
+        {...(showOverlay ? { inert: '' } : {})}
+      >
         <div className="w-full max-w-3xl">
           <Header toggleTheme={toggleTheme} />
           <div className="flex flex-col justify-between pb-5 pt-10 font-dm-sans">
