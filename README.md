@@ -34,6 +34,8 @@ npm run lint     # run ESLint
 
 Deploy this static site through Cloudflare Pages with its GitHub integration:
 
+- Project: [`emmettdotdev`](https://dash.cloudflare.com/ce4f4a533bc2795d7cdf22f5c5d9eeb4/pages/view/emmettdotdev)
+- Default hostname: https://emmettdotdev.pages.dev
 - Repository: `Emmett-H/emmettdotdev`
 - Production branch: `main`
 - Root directory: repository root
@@ -51,6 +53,9 @@ the app does not need an analytics package or a manually embedded script.
 Traffic reports are available in Cloudflare's **Web Analytics** dashboard,
 including visits, page views, countries, referrers, browsers, and devices.
 These are aggregate statistics, not the identities of individual visitors.
+
+[Open this site's Web Analytics dashboard](https://dash.cloudflare.com/ce4f4a533bc2795d7cdf22f5c5d9eeb4/web-analytics/overview?siteTag~in=3fa2a946e61d4ea48c72e26ea0097be6).
+Filter by host `www.emmett.dev` to inspect traffic on the public domain.
 
 Keep the existing canonical domain, `www.emmett.dev`, and the permanent
 redirect from `emmett.dev`. Associate both domains with the Pages project
